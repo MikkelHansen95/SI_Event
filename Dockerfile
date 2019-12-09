@@ -15,5 +15,5 @@ RUN npm ci
 # Bundle app source
 COPY . .
 
-EXPOSE 3000
-CMD [ "node", "cateringServer.js" ]
+EXPOSE 3001
+CMD [ "node", "eventServer.js" ]
