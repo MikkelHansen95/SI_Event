@@ -32,7 +32,7 @@ jobs:
     - name: Publish to Docker Repository
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: pravien/catering
+        name: pravien/event
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }} 
       env:
