@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-deployment
+  labels:
+    run: event
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: event
+  template:
+    metadata:
+      labels:
+        run: event
+    spec:
+      containers:
+      - name: event
+        image: pravien/event
+        ports:
+        - containerPort: 3001
