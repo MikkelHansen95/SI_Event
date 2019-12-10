@@ -44,4 +44,4 @@ jobs:
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
       with:
-        args: set image --record deployment/event-deployment catering=pravien/event:${{ github.sha }}
+        args: set image --record deployment/event-deployment event=pravien/event:${{ github.sha }}
