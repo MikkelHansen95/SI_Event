@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 
 test('get all events', async () => {
 
-    return fetch('http://localhost:3001/event/all')
+    return fetch('http://localhost:3001/all')
         .then(res => {
             return res.json()
         })
@@ -16,7 +16,7 @@ test('get all events', async () => {
 
 test('check if specific id exists', async () => {
 
-    return fetch('http://localhost:3001/event/10')
+    return fetch('http://localhost:3001/10')
         .then(res => {
             return res.json()
         })

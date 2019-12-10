@@ -8,7 +8,7 @@ app.use(express.json())
 app.use(cors());
 
 let events = [new Event(10,"party"),new Event(100,"LAN"),new Event(200,"Board games"),new Event(700,"Fashion show")]
-app.post('/event/:name', function (req, res) {
+app.post('/:name', function (req, res) {
     try {
         console.log(process.cwd())
         var data = fs.readFileSync('number.txt', { encoding: 'utf8' })
@@ -29,11 +29,11 @@ app.post('/event/:name', function (req, res) {
     }
 })
 
-app.get('/event/all', function (req, res) {
+app.get('/all', function (req, res) {
     res.send(JSON.stringify(events))
 })
 
-app.get('/event/:eventId', function (req, res) {
+app.get('/:eventId', function (req, res) {
     let incomingID = parseInt(req.params.eventId)
     for (var i = 0; i < events.length; i++){
         console.log(events[i].id)
