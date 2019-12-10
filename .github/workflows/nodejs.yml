@@ -30,10 +30,18 @@ jobs:
         kill %1
     - uses: actions/checkout@master
     - name: Publish to Docker Repository
-      uses: elgohr/Publish-Docker-Github-Action@master
+      id: publish
+      uses: jerray/publish-docker-action@master
       with:
-        name: pravien/event
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }} 
+        repository: pravien/event
+        tags: ${{ github.sha }},latest
       env:
         CI: true
+    - uses: steebchen/kubectl@master
+      name: Deploy to kubernetes
+      env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+      with:
+        args: set image --record deployment/event-deployment catering=pravien/event:${{ github.sha }}
