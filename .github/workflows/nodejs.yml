@@ -1,6 +1,9 @@
 name: On Push build and publish docker
 
-on: [push]
+on:
+  push:
+  repository_dispatch:
+    types: api-trigger
 
 jobs:
   build:
